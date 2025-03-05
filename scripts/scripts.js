@@ -24,12 +24,6 @@ import {
 import { trackHistory } from './commerce.js';
 import initializeDropins from './initializers/index.js';
 
-const AUDIENCES = {
-  mobile: () => window.innerWidth < 600,
-  desktop: () => window.innerWidth >= 600,
-  // define your custom audiences here as needed
-};
-
 /**
  * Returns the true origin of the current page in the browser.
  * If the page is running in a iframe with srcdoc, the ancestor origin is returned.
@@ -53,6 +47,12 @@ export function getHref() {
   const urlParams = new URLSearchParams(parentLocation.search);
   return `${parentLocation.origin}${urlParams.get('path')}`;
 }
+
+const AUDIENCES = {
+  mobile: () => window.innerWidth < 600,
+  desktop: () => window.innerWidth >= 600,
+  // define your custom audiences here as needed
+};
 
 /**
  * Gets all the metadata elements that are in the given scope.
